@@ -1,0 +1,427 @@
+/* frontend/styles.css */
+
+/* CSS Variables for Theme Colors */
+:root {
+    /* Dark Theme Colors */
+    --background-color: #121212;
+    --container-bg-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --primary-color: #bb86fc;
+    /* Soft Purple */
+    --secondary-color: #03dac6;
+    /* Teal */
+    --button-bg-color: #bb86fc;
+    --button-text-color: #121212;
+    --button-hover-bg-color: #985eff;
+    --input-bg-color: #2c2c2c;
+    --input-border-color: #3e3e3e;
+    --border-color: #333333;
+    --box-stroke-color: #03dac6;
+    --label-bg-color: rgba(3, 218, 198, 0.7);
+    /* Semi-transparent Teal */
+    --label-text-color: #121212;
+
+    /* Light Theme Colors (Optional for Theme Toggle) */
+    --light-background-color: #ffffff;
+    --light-container-bg-color: #f9f9f9;
+    --light-text-color: #1e1e1e;
+    --light-primary-color: #6200ee;
+    /* Deep Purple */
+    --light-secondary-color: #03dac6;
+    /* Teal */
+    --light-button-bg-color: #6200ee;
+    --light-button-text-color: #ffffff;
+    --light-button-hover-bg-color: #3700b3;
+    --light-input-bg-color: #ffffff;
+    --light-input-border-color: #cccccc;
+    --light-border-color: #dddddd;
+    --light-box-stroke-color: #6200ee;
+    --light-label-bg-color: rgba(98, 0, 238, 0.7);
+    /* Semi-transparent Deep Purple */
+    --light-label-text-color: #ffffff;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 50px;
+    margin: 0;
+    min-height: 60vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    background-color: var(--container-bg-color);
+    padding: 30px;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 10px;
+}
+
+/* Hide default checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--primary-color);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#theme-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+/* Upload Form Styles */
+#upload-form {
+    margin-bottom: 20px;
+}
+
+#image-input {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    font-size: 16px;
+}
+
+#image-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+#image-input::file-selector-button {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+#image-input::file-selector-button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0px);
+    box-shadow: none;
+}
+
+#results {
+    margin-top: 20px;
+}
+
+#image-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+#uploaded-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    display: block;
+    transition: border-color 0.3s ease;
+}
+
+#bounding-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Allow clicks to pass through the canvas */
+}
+
+pre {
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #2c2c2c;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    color: var(--text-color);
+}
+
+/* Download Button Specific Styles */
+#results button {
+    background-color: var(--secondary-color);
+    color: var(--button-text-color);
+}
+
+#results button:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 6px solid var(--container-bg-color);
+    border-top: 6px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+
+
+/* Light Theme Overrides */
+#theme-label.light-theme {
+    color: var(--input-border-color);
+}
+
+body.light-theme {
+    background-color: var(--light-background-color);
+    color: var(--light-text-color);
+}
+
+.container.light-theme {
+    background-color: var(--light-container-bg-color);
+}
+
+h1.light-theme {
+    color: var(--light-primary-color);
+}
+
+#image-input.light-theme {
+    background-color: var(--light-input-bg-color);
+    border-color: var(--light-input-border-color);
+    color: var(--light-text-color);
+}
+
+#image-input.light-theme::file-selector-button {
+    background-color: var(--light-button-bg-color);
+    color: var(--light-button-text-color);
+}
+
+#image-input.light-theme::file-selector-button:hover {
+    background-color: var(--light-button-hover-bg-color);
+}
+
+button.light-theme {
+    background-color: var(--light-button-bg-color);
+    color: var(--light-button-text-color);
+}
+
+button.light-theme:hover {
+    background-color: var(--light-button-hover-bg-color);
+}
+
+pre.light-theme {
+    background-color: var(--light-container-bg-color);
+    color: var(--light-text-color);
+}
+
+.blur {
+    filter: blur(3px);
+    /* Adjust the blur intensity */
+    transition: filter 0.3s ease;
+    /* Smooth transition */
+}
+
+.loader {
+    width: calc(100px - 24px);
+    height: 50px;
+    position: fixed;
+    top: 60%;
+    left: 47%;
+    animation: flippx 2s infinite linear;
+    z-index: 1000;
+}
+
+.loader:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FFF;
+    transform-origin: -24px 50%;
+    animation: spin 1s infinite linear;
+    z-index: 1000;
+}
+
+.loader:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    z-index: 1000;
+}
+
+@keyframes flippx {
+
+    0%,
+    49% {
+        transform: scaleX(1);
+    }
+
+    50%,
+    100% {
+        transform: scaleX(-1);
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    .container {
+        margin-top: 40px;
+        padding: 10px;
+    }
+
+    #image-input {
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    #theme-label {
+        font-size: 14px;
+    }
+
+    .loader {
+        top: 55%;
+        left: 42%;
+    }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Deraining App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Image Deraining App</h1>
+
+        <!-- Theme Toggle Switch -->
+        <div class="theme-toggle">
+            <label class="switch">
+                <input type="checkbox" id="theme-switch">
+                <span class="slider round"></span>
+            </label>
+            <h3 id="theme-label">Light Mode</h3>
+        </div>
+
+        <!-- File Upload Form -->
+        <form id="upload-form" enctype="multipart/form-data">
+            <input type="file" id="image-input" name="file" accept="image/*" required>
+            <button type="submit">Remove Rain</button>
+        </form>
+
+        <!-- Results Section -->
+        <div id="results" style="display: none;">
+            <h2>Results</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="width: 48%;">
+                    <h3>Input Image</h3>
+                    <img id="uploaded-image" alt="Input Image" width="100%">
+                </div>
+                <div style="width: 48%;">
+                    <h3>Restored Image</h3>
+                    <img id="restored-image" alt="Restored Image" width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ by <strong>Technoayan</strong></p>
+    </footer>
+
+    <!-- Loader -->
+    <span class="loader" id="loader" style="display: none;"></span>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
